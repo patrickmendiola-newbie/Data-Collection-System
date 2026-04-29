@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Collection System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN: Login
+══════════════════════════════════════════════════════════ -->
+<div id="s-login" class="screen active">
+  <div class="login-wrap">
+    <div class="login-box">
+      <div class="login-header">
+        <h1>Video Collection System</h1>
+        <p>Sign in to continue</p>
+      </div>
+      <div class="card">
+        <div class="field">
+          <label for="login-user">Username</label>
+          <input type="text" id="login-user" placeholder="Enter username" autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="login-pass">Password</label>
+          <input type="password" id="login-pass" placeholder="Enter password" autocomplete="current-password">
+        </div>
+        <div id="login-err" style="display:none"></div>
+        <button class="btn primary" style="width:100%;justify-content:center;margin-top:6px" onclick="doLogin()">
+          Sign in
+        </button>
+      </div>
+      <p class="login-hint">
+        Demo — <strong>admin</strong> / admin123 &nbsp;|&nbsp; <strong>tasker1</strong> / pass123
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN: Tasker
+══════════════════════════════════════════════════════════ -->
+<div id="s-tasker" class="screen">
+  <header class="app-header">
+    <div class="header-left">
+      <span class="app-title">Video Collection System</span>
+      <span class="badge tasker">Tasker</span>
+    </div>
+    <div class="header-right">
+      <span id="tasker-name-badge" class="user-label"></span>
+      <button class="btn sm" onclick="showSignoutModal()">Sign out</button>
+    </div>
+  </header>
+  <div class="app-body">
+    <nav class="sidebar" id="s-tasker-nav">
+      <div class="nav-item active" onclick="taskerNav('dashboard', this)">Dashboard</div>
+      <div class="nav-item" onclick="taskerNav('settings', this)">Settings</div>
+    </nav>
+    <main class="content" id="tasker-content">
+      <!-- Rendered by JS -->
+    </main>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN: Admin
+══════════════════════════════════════════════════════════ -->
+<div id="s-admin" class="screen">
+  <header class="app-header">
+    <div class="header-left">
+      <span class="app-title">Video Collection System</span>
+      <span class="badge admin">Admin</span>
+    </div>
+    <div class="header-right">
+      <span id="admin-name-badge" class="user-label"></span>
+      <button class="btn sm" onclick="showSignoutModal()">Sign out</button>
+    </div>
+  </header>
+  <div class="app-body">
+    <nav class="sidebar" id="s-admin-nav">
+      <div class="nav-item active" onclick="adminNav('dashboard', this)">Dashboard</div>
+      <div class="nav-item" onclick="adminNav('assign', this)">Assign task</div>
+      <div class="nav-item" onclick="adminNav('users', this)">Manage users</div>
+      <div class="nav-item" onclick="adminNav('settings', this)">Settings</div>
+    </nav>
+    <main class="content" id="admin-content">
+      <!-- Rendered by JS -->
+    </main>
+  </div>
+</div>
+
+<!-- Modal mount point -->
+<div id="modal-layer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     Scripts — order matters: data → ui → components → auth → tasker → admin
+══════════════════════════════════════════════════════════ -->
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/components.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/tasker.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>
